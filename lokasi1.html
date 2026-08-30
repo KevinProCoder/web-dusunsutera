@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapet - Pelabuhan | Dusun Semparuk Sutera</title>
+    <!-- Google Fonts: Playfair Display (heading) & Outfit (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo Dusun Sutera" class="logo-img">
+                <h1>Dusun Semparuk Sutera</h1>
+            </div>
+            <a href="index.html" class="back-btn" style="color: white; text-decoration: none; font-weight: bold;">← Kembali</a>
+        </div>
+    </nav>
+
+    <!-- Detail Lokasi -->
+    <section class="detail-lokasi-section">
+        <div class="container">
+            <h2 class="section-title">Kapet - Pelabuhan</h2>
+            
+            <!-- Carousel -->
+            <div class="carousel-container detail-carousel">
+                <div class="carousel">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide active">
+                        <img src="assets/lokasi1/slide1.jpg" alt="Pelabuhan 1" class="slide-image">
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <img src="assets/lokasi1/slide2.jpg" alt="Pelabuhan 2" class="slide-image">
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="carousel-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+
+                <!-- Dots Indicator -->
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                </div>
+            </div>
+
+            <!-- Detail Deskripsi -->
+            <div class="detail-content">
+                <h3>Deskripsi</h3>
+                <p>
+                    Pelabuhan Kapet (Kapet) adalah salah satu pusat pelabuhan yang strategis dan ramai di Dusun Semparuk Sutera. 
+                    Pelabuhan ini menjadi jantung aktivitas ekonomi lokal dengan lalu lintas kapal nelayan dan pengangkut barang yang 
+                    cukup padat. Pengunjung dapat melihat langsung kehidupan para nelayan, kapal-kapal tradisional, dan kegiatan 
+                    jual-beli hasil laut yang berlangsung setiap hari.
+                </p>
+                <p>
+                    Kapet juga merupakan tempat yang sempurna untuk mempelajari budaya maritim lokal dan tradisi nelayan yang telah 
+                    berlangsung turun-temurun. Suasana pelabuhan yang dinamis menawarkan pengalaman unik tentang kehidupan masyarakat 
+                    pesisir Indonesia.
+                </p>
+
+                <h3>Fasilitas</h3>
+                <ul class="fasilitas-list">
+                    <li><span class="material-symbols-outlined">check_circle</span> Area parkir</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Toilet umum</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Surau</li>
+                </ul>
+
+                <h3>Jam Operasional</h3>
+                <p>
+                    <strong>Senin - Minggu: 06:00 - 18:00</strong>
+                </p>
+
+                <div class="detail-btn-group">
+                    <a href="index.html#lokasi" class="detail-btn">← Kembali ke Daftar Lokasi</a>
+                    <a href="index.html" class="detail-btn">← Ke Halaman Utama</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Desa Semparuk Sutera, Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlideIndex = 0;
+        let autoSlideTimer;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (index >= slides.length) {
+                currentSlideIndex = 0;
+            } else if (index < 0) {
+                currentSlideIndex = slides.length - 1;
+            } else {
+                currentSlideIndex = index;
+            }
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function changeSlide(n) {
+            clearTimeout(autoSlideTimer);
+            showSlide(currentSlideIndex + n);
+            autoSlide();
+        }
+
+        function currentSlide(n) {
+            clearTimeout(autoSlideTimer);
+            showSlide(n);
+            autoSlide();
+        }
+
+        function autoSlide() {
+            autoSlideTimer = setTimeout(() => {
+                showSlide(currentSlideIndex + 1);
+                autoSlide();
+            }, 4000);
+        }
+
+        // Inisialisasi
+        autoSlide();
+    </script>
+
+    <style>
+        .detail-lokasi-section {
+            padding: 60px 20px;
+            background-color: var(--surface);
+        }
+
+        .detail-carousel {
+            height: 450px;
+            margin: 3rem 0;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 40px -15px rgba(var(--shadow-tint), 0.18);
+        }
+
+        .detail-content {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            line-height: 1.8;
+        }
+
+        .detail-content h3 {
+            font-family: var(--font-display);
+            color: var(--pine-teal);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--fern);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-content p {
+            color: var(--on-surface-variant);
+            text-align: justify;
+            margin-bottom: 1rem;
+        }
+
+        .detail-content ul {
+            list-style: none;
+            padding-left: 0;
+            line-height: 2;
+            color: var(--on-surface-variant);
+        }
+
+        .detail-content ul li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .detail-content ul li .material-symbols-outlined {
+            color: var(--fern);
+            font-size: 20px;
+        }
+
+        .detail-btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .detail-btn {
+            display: inline-block;
+            background: var(--hunter-green);
+            border: 1px solid var(--pine-teal);
+            color: var(--surface-white);
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            font-weight: 600;
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+        }
+
+        .detail-btn:hover {
+            transform: translateY(-2px);
+            background: var(--tertiary-container);
+            box-shadow: 0 10px 25px -8px rgba(var(--shadow-tint), 0.3);
+        }
+
+        .back-btn {
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-lokasi-section {
+                padding: 40px 20px;
+            }
+
+            .detail-carousel {
+                height: 300px;
+            }
+
+            .detail-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .detail-btn-group {
+                flex-direction: column;
+            }
+
+            .detail-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</body>
+</html>

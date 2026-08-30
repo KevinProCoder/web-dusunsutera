@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desa Semparuk Sutera - Sambas, Kalimantan Barat</title>
+
+    <!-- Google Fonts: Playfair Display (heading) & Outfit (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet Map Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+
+<body>
+
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <nav class="navbar">
+        <div class="nav-container">
+
+            <!-- Logo dan Judul -->
+            <div class="logo">
+                <img src="logo.png" alt="Logo Dusun Sutera" class="logo-img">
+                <h1>Dusun Semparuk Sutera</h1>
+            </div>
+
+            <!-- Hamburger Button -->
+            <button
+                class="hamburger"
+                id="hamburgerBtn"
+                type="button"
+                aria-label="Buka menu"
+                aria-expanded="false"
+                onclick="toggleMenu()"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="navMenu">
+                <li>
+                    <a
+                        href="#home"
+                        class="nav-link"
+                        onclick="scrollToSection('home')"
+                    >
+                        Beranda
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="#tentang"
+                        class="nav-link"
+                        onclick="scrollToSection('tentang')"
+                    >
+                        Tentang Desa
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="#lokasi"
+                        class="nav-link"
+                        onclick="scrollToSection('lokasi')"
+                    >
+                        Lokasi
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="#peta"
+                        class="nav-link"
+                        onclick="scrollToSection('peta')"
+                    >
+                        Peta
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="#statistik"
+                        class="nav-link"
+                        onclick="scrollToSection('statistik')"
+                    >
+                        Statistik
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <!-- ==================== SECTION HOME / HERO ==================== -->
+
+    <section id="home" class="hero">
+
+        <div class="carousel-container">
+
+            <div class="carousel">
+
+                <!-- Slide 1 -->
+                <div class="carousel-slide active">
+                    <img
+                        src="assets/foto1.jpg"
+                        alt="Foto Desa 1"
+                        class="slide-image"
+                    >
+
+                    <div class="slide-content">
+                        <span class="slide-badge"><span class="dot-mark"></span>Kecamatan Semparuk, Sambas</span>
+                        <h2>Selamat Datang di Desa Semparuk Sutera</h2>
+                        <p>
+                            Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <img
+                        src="assets/foto2.jpg"
+                        alt="Foto Desa 2"
+                        class="slide-image"
+                    >
+
+                    <div class="slide-content">
+                        <span class="slide-badge"><span class="dot-mark"></span>Kecamatan Semparuk, Sambas</span>
+                        <h2>Selamat Datang di Desa Semparuk Sutera</h2>
+                        <p>
+                            Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <img
+                        src="assets/foto3.jpg"
+                        alt="Foto Desa 3"
+                        class="slide-image"
+                    >
+
+                    <div class="slide-content">
+                        <span class="slide-badge"><span class="dot-mark"></span>Kecamatan Semparuk, Sambas</span>
+                        <h2>Selamat Datang di Desa Semparuk Sutera</h2>
+                        <p>
+                            Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <img
+                        src="assets/foto4.jpg"
+                        alt="Foto Desa 4"
+                        class="slide-image"
+                    >
+
+                    <div class="slide-content">
+                        <span class="slide-badge"><span class="dot-mark"></span>Kecamatan Semparuk, Sambas</span>
+                        <h2>Selamat Datang di Desa Semparuk Sutera</h2>
+                        <p>
+                            Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="carousel-slide">
+                    <img
+                        src="assets/foto5.jpg"
+                        alt="Foto Desa 5"
+                        class="slide-image"
+                    >
+
+                    <div class="slide-content">
+                        <span class="slide-badge"><span class="dot-mark"></span>Kecamatan Semparuk, Sambas</span>
+                        <h2>Selamat Datang di Desa Semparuk Sutera</h2>
+                        <p>
+                            Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="carousel-slide">
+                    <img
+                        src="assets/foto6.jpg"
+                        alt="Foto Desa 6"
+                        class="slide-image"
+                    >
+
+                    <div class="slide-content">
+                        <span class="slide-badge"><span class="dot-mark"></span>Kecamatan Semparuk, Sambas</span>
+                        <h2>Selamat Datang di Desa Semparuk Sutera</h2>
+                        <p>
+                            Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Navigation Buttons -->
+            <button
+                class="carousel-btn prev-btn"
+                onclick="changeSlide(-1)"
+            >
+                &#10094;
+            </button>
+
+            <button
+                class="carousel-btn next-btn"
+                onclick="changeSlide(1)"
+            >
+                &#10095;
+            </button>
+
+
+            <!-- Dots Indicator -->
+            <div class="carousel-dots">
+                <span
+                    class="dot active"
+                    onclick="currentSlide(0)"
+                ></span>
+
+                <span
+                    class="dot"
+                    onclick="currentSlide(1)"
+                ></span>
+
+                <span
+                    class="dot"
+                    onclick="currentSlide(2)"
+                ></span>
+
+                <span
+                    class="dot"
+                    onclick="currentSlide(3)"
+                ></span>
+
+                <span
+                    class="dot"
+                    onclick="currentSlide(4)"
+                ></span>
+
+                <span
+                    class="dot"
+                    onclick="currentSlide(5)"
+                ></span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================== SECTION TENTANG DESA ==================== -->
+
+    <section id="tentang" class="tentang-desa">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Tentang Desa Semparuk Sutera
+            </h2>
+
+            <div class="tentang-content">
+
+                <div class="tentang-text">
+
+                    <span class="section-badge">Profil Desa</span>
+                    <h3>Sejarah dan Profil Desa</h3>
+
+                    <p>
+                        Desa Semparuk Sutera adalah sebuah desa yang terletak di Kecamatan Semparuk, Kabupaten Sambas,
+                        Provinsi Kalimantan Barat, Indonesia. Desa kami memiliki kekayaan alam yang melimpah dengan kehidupan
+                        masyarakat yang ramah dan penuh kebersamaan.
+                    </p>
+
+                    <p>
+                        Dengan potensi pertanian yang kuat dan tradisi budaya yang kaya, Desa Semparuk Sutera terus berkembang
+                        menjadi destinasi wisata yang menarik bagi para pengunjung yang ingin mengenal lebih dekat kehidupan desa
+                        tradisional Indonesia.
+                    </p>
+
+                    <h3>Letak Geografis</h3>
+
+                    <p>
+                        <strong>Provinsi:</strong> Kalimantan Barat<br>
+                        <strong>Kabupaten:</strong> Sambas<br>
+                        <strong>Kecamatan:</strong> Semparuk<br>
+                        <strong>Desa:</strong> Semparuk Sutera
+                    </p>
+
+                </div>
+
+
+                <div class="tentang-image">
+                    <div class="image-placeholder">
+                        <img src="assets/fotodesa.jpg" alt="Foto Desa 5">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================== SECTION LOKASI WISATA ==================== -->
+
+    <section id="lokasi" class="lokasi-wisata">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Beberapa Lokasi di Dusun Sutera
+            </h2>
+
+            <p class="section-subtitle">
+                Klik pada kartu untuk melihat detail lokasi
+            </p>
+
+
+            <div class="lokasi-grid">
+
+                <!-- Lokasi 1 -->
+                <div
+                    class="kartu-lokasi"
+                    onclick="window.location.href='lokasi1.html'"
+                    style="cursor: pointer;"
+                >
+                    <div class="kartu-image lokasi1-img"><span class="material-symbols-outlined">directions_boat</span></div>
+
+                    <div class="kartu-info">
+                        <h3>Kapet - Pelabuhan</h3>
+                        <p>Pelabuhan yang strategis dan ramai</p>
+                    </div>
+                </div>
+
+
+                <!-- Lokasi 2 -->
+                <div
+                    class="kartu-lokasi"
+                    onclick="window.location.href='lokasi2.html'"
+                    style="cursor: pointer;"
+                >
+                    <div class="kartu-image lokasi2-img"><span class="material-symbols-outlined">forest</span></div>
+
+                    <div class="kartu-info">
+                        <h3>SPPG Dusun Semparuk Sutera</h3>
+                        <p>SPPG Makanan Bergizi Gratis</p>
+                    </div>
+                </div>
+
+
+                <!-- Lokasi 3 -->
+                <div
+                    class="kartu-lokasi"
+                    onclick="window.location.href='lokasi3.html'"
+                    style="cursor: pointer;"
+                >
+                    <div class="kartu-image lokasi3-img"><span class="material-symbols-outlined">mosque</span></div>
+
+                    <div class="kartu-info">
+                        <h3>Tempat Ibadah</h3>
+                        <p>Ruang Ibadah yang nyaman dan asri</p>
+                    </div>
+                </div>
+
+
+                <!-- Lokasi 4 -->
+                <div
+                    class="kartu-lokasi"
+                    onclick="window.location.href='lokasi4.html'"
+                    style="cursor: pointer;"
+                >
+                    <div class="kartu-image lokasi4-img"><span class="material-symbols-outlined">local_police</span></div>
+
+                    <div class="kartu-info">
+                        <h3>Polsek</h3>
+                        <p>Instansi kepolisian di wilayah desa</p>
+                    </div>
+                </div>
+
+
+                <!-- Lokasi 5 -->
+                <div
+                    class="kartu-lokasi"
+                    onclick="window.location.href='lokasi5.html'"
+                    style="cursor: pointer;"
+                >
+                    <div class="kartu-image lokasi5-img"><span class="material-symbols-outlined">grass</span></div>
+
+                    <div class="kartu-info">
+                        <h3>Sawah dan Perkebunan</h3>
+                        <p>Kehidupan pertanian tradisional</p>
+                    </div>
+                </div>
+
+
+                <!-- Lokasi 6 -->
+                <div
+                    class="kartu-lokasi"
+                    onclick="window.location.href='lokasi6.html'"
+                    style="cursor: pointer;"
+                >
+                    <div class="kartu-image lokasi6-img"><span class="material-symbols-outlined">restaurant</span></div>
+
+                    <div class="kartu-info">
+                        <h3>Rumah Makan Desa</h3>
+                        <p>Cita rasa autentik makanan lokal</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================== MODAL DETAIL LOKASI ==================== -->
+
+    <div id="lokasiModal" class="modal">
+
+        <div class="modal-content">
+
+            <span
+                class="close"
+                onclick="closeModal()"
+            >
+                &times;
+            </span>
+
+            <div id="modalBody">
+                <!-- Konten modal akan diisi oleh JavaScript -->
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================== SECTION PETA ==================== -->
+
+    <section id="peta" class="peta-lokasi">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Lokasi Desa di Peta Satelit
+            </h2>
+
+            <p class="section-subtitle">
+                Lihat lokasi Desa Semparuk Sutera di Peta Satelit
+            </p>
+
+
+            <div class="map-container">
+
+                <div id="map" class="map"></div>
+
+
+                <div class="map-info">
+
+                    <div class="info-card">
+
+                        <h3><span class="material-symbols-outlined">location_on</span> Informasi Lokasi</h3>
+
+                        <p>
+                            <strong>Desa:</strong> Semparuk Sutera
+                        </p>
+
+                        <p>
+                            <strong>Kecamatan:</strong> Semparuk
+                        </p>
+
+                        <p>
+                            <strong>Kabupaten:</strong> Sambas
+                        </p>
+
+                        <p>
+                            <strong>Provinsi:</strong> Kalimantan Barat
+                        </p>
+
+                        <p>
+                            <strong>Indonesia</strong>
+                        </p>
+
+                        <hr>
+
+                        <p>
+                            <strong>Koordinat:</strong>
+                        </p>
+
+                        <p>
+                            Lat: 1.1829° | Lon: 109.0723°
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================== SECTION STATISTIK ==================== -->
+
+    <section id="statistik" class="statistik">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Statistik Penduduk Desa Semparuk Sutera
+            </h2>
+
+
+            <div class="statistik-grid">
+
+                <div class="statistik-card">
+                    <div class="statistik-number">8,085</div>
+                    <div class="statistik-label">Total Penduduk</div>
+                </div>
+
+                <div class="statistik-card">
+                    <div class="statistik-number">4,140</div>
+                    <div class="statistik-label">Penduduk Laki-laki</div>
+                </div>
+
+                <div class="statistik-card">
+                    <div class="statistik-number">3,945</div>
+                    <div class="statistik-label">Penduduk Perempuan</div>
+                </div>
+
+                <div class="statistik-card">
+                    <div class="statistik-number">3,345</div>
+                    <div class="statistik-label">Kepala Keluarga</div>
+                </div>
+
+            </div>
+
+
+            <div class="statistik-detail">
+
+                <h3><span class="material-symbols-outlined">bar_chart</span> Catatan Data</h3>
+
+                <p style="color: #666; line-height: 1.8; text-align: center;">
+                    Data penduduk di atas bersumber dari
+                    <strong>Data Kependudukan Badan Kemendagri Semester I 2024</strong>
+                    dan
+                    <strong>Badan Pusat Statistik (BPS) Kabupaten Sambas</strong>.
+                </p>
+
+                <p style="color: #999; font-size: 0.95rem; text-align: center; margin-top: 1rem;">
+                    Data demografi lengkap (umur, pendidikan, mata pencaharian)
+                    untuk Dusun Sutera secara khusus belum tersedia secara publik.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================== FOOTER ==================== -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <p>
+                &copy; 2024 Desa Semparuk Sutera,
+                Kecamatan Semparuk,
+                Kabupaten Sambas,
+                Kalimantan Barat
+            </p>
+
+            <p>
+                Hubungi Kami: Kantor Desa |
+                Telp: (0562) XXXX XXXX
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+
+    <script src="scripts.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1277 @@
+/* =========================================================
+   DUSUN SEMPARUK SUTERA — "Rural Silk Editorial" Design System
+   Diterapkan dari referensi desain Google Stitch (DESIGN.md)
+   ========================================================= */
+
+/* ==================== DESIGN TOKENS ==================== */
+:root {
+    /* --- Palet warna inti (sesuai permintaan) --- */
+    --dust-grey: #dad7cd;
+    --dry-sage: #a3b18a;
+    --fern: #588157;
+    --hunter-green: #3a5a40;
+    --pine-teal: #344e41;
+
+    /* --- Perluasan token dari DESIGN.md (Rural Silk Editorial) --- */
+    --surface: #fdf9ef;
+    --surface-white: #ffffff;
+    --surface-container-lowest: #ffffff;
+    --surface-container-low: #f7f3e9;
+    --surface-container: #f1eee3;
+    --surface-container-high: #ebe8de;
+    --surface-container-highest: #e6e2d8;
+    --surface-dim: #dddad0;
+    --surface-variant: #e6e2d8;
+
+    --on-surface: #1c1c16;
+    --on-surface-variant: #424940;
+    --inverse-surface: #31312a;
+    --inverse-on-surface: #f4f1e6;
+
+    --outline: #72796f;
+    --outline-variant: #c2c9bd;
+
+    --primary: #3d653e;
+    --on-primary: #ffffff;
+    --primary-container: #557e55;
+
+    --secondary: #566342;
+    --secondary-container: #d7e5bb;
+    --on-secondary-container: #5a6745;
+
+    --tertiary: #436349;
+    --tertiary-container: #5b7c60;
+    --on-tertiary-container: #f6fff3;
+
+    --error: #ba1a1a;
+
+    --shadow-tint: 52, 78, 65;
+
+    /* --- Tipografi --- */
+    --font-display: 'Playfair Display', 'Georgia', serif;
+    --font-body: 'Outfit', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* --- Radius --- */
+    --radius-sm: 0.25rem;
+    --radius: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 9999px;
+
+    /* --- Spacing --- */
+    --space-base: 8px;
+    --space-gutter: 24px;
+    --space-margin-mobile: 16px;
+    --space-margin-desktop: 64px;
+    --space-section-gap: 80px;
+}
+
+/* ==================== RESET & GENERAL ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--on-surface);
+    background-color: var(--surface);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==================== ICON HELPER (Material Symbols) ==================== */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+/* ==================== NAVBAR ==================== */
+.navbar {
+    background: var(--pine-teal);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(var(--shadow-tint), 0.18);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--dust-grey);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    padding: 0;
+    border: none;
+}
+
+.logo h1 {
+    font-family: var(--font-display);
+    color: var(--dust-grey);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--dust-grey);
+    opacity: 0.85;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+}
+
+.nav-link:hover {
+    opacity: 1;
+    background-color: rgba(253, 249, 239, 0.12);
+    transform: translateY(-1px);
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero {
+    background: var(--pine-teal);
+    color: var(--surface-white);
+    padding: 0;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==================== CAROUSEL ==================== */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    display: flex;
+    align-items: stretch;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.slide-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: saturate(0.95);
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(28, 39, 27, 0) 0%,
+        rgba(28, 39, 27, 0.55) 55%,
+        rgba(24, 34, 24, 0.92) 100%
+    );
+    color: var(--surface-white);
+    padding: 3.5rem 3rem;
+    z-index: 2;
+    text-align: left;
+    animation: slideUp 0.8s ease-in-out;
+}
+
+.slide-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-full);
+    background: rgba(253, 249, 239, 0.12);
+    border: 1px solid rgba(253, 249, 239, 0.25);
+    backdrop-filter: blur(6px);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--surface-white);
+    margin-bottom: 1.2rem;
+}
+
+.slide-badge .dot-mark {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--dry-sage);
+    display: inline-block;
+}
+
+.slide-content h2 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    max-width: 700px;
+}
+
+.slide-content p {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    opacity: 0.92;
+    max-width: 600px;
+}
+
+/* ==================== NAVIGATION BUTTONS ==================== */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(253, 249, 239, 0.16);
+    color: var(--surface-white);
+    border: 1px solid rgba(253, 249, 239, 0.25);
+    font-size: 28px;
+    padding: 18px 22px;
+    cursor: pointer;
+    border-radius: var(--radius-full);
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(6px);
+}
+
+.carousel-btn:hover {
+    background-color: rgba(253, 249, 239, 0.32);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+/* ==================== DOTS INDICATOR ==================== */
+.carousel-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(253, 249, 239, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(253, 249, 239, 0.6);
+}
+
+.dot:hover {
+    background-color: rgba(253, 249, 239, 0.75);
+    transform: scale(1.2);
+}
+
+.dot.active {
+    background-color: var(--dry-sage);
+    border-color: var(--dry-sage);
+    transform: scale(1.25);
+}
+
+/* ==================== PETA LOKASI ==================== */
+.peta-lokasi {
+    padding: var(--space-section-gap) 20px;
+    background-color: var(--surface);
+}
+
+.map-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-gutter);
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.map {
+    width: 100%;
+    height: 500px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px -15px rgba(var(--shadow-tint), 0.18);
+    overflow: hidden;
+    background-color: var(--surface-container-high);
+    z-index: 1;
+    position: relative;
+    border: 1px solid var(--outline-variant);
+}
+
+.map .leaflet-container {
+    background-color: var(--surface-container-high);
+}
+
+/* Leaflet Fix */
+.map .leaflet-pane,
+.map .leaflet-tile,
+.map .leaflet-marker-icon,
+.map .leaflet-marker-shadow,
+.map .leaflet-tile-pane,
+.map .leaflet-overlay-pane,
+.map .leaflet-shadow-pane,
+.map .leaflet-marker-pane,
+.map .leaflet-popup-pane,
+.map .leaflet-tooltip-pane {
+    position: absolute;
+}
+
+.map-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info-card {
+    background: var(--pine-teal);
+    color: var(--dust-grey);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px -15px rgba(var(--shadow-tint), 0.25);
+    animation: fadeInRight 0.8s ease;
+}
+
+.info-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--surface-white);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(253, 249, 239, 0.2);
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-card p {
+    margin-bottom: 0.8rem;
+    line-height: 1.8;
+    font-size: 0.98rem;
+}
+
+.info-card hr {
+    border: none;
+    border-top: 1px solid rgba(253, 249, 239, 0.2);
+    margin: 1rem 0;
+}
+
+/* ==================== TENTANG DESA ==================== */
+.tentang-desa {
+    padding: var(--space-section-gap) 20px;
+    background-color: var(--surface);
+}
+
+.section-badge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    border-radius: var(--radius-full);
+    background: var(--secondary-container);
+    color: var(--tertiary);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--pine-teal);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 72px;
+    height: 3px;
+    background: var(--fern);
+    border-radius: var(--radius-full);
+}
+
+.tentang-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-gutter);
+    align-items: center;
+}
+
+.tentang-text h3 {
+    font-family: var(--font-display);
+    color: var(--pine-teal);
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.tentang-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: var(--on-surface-variant);
+}
+
+.tentang-image {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 400px;
+    background: var(--dry-sage);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 40px -15px rgba(var(--shadow-tint), 0.18);
+    border: 1px solid var(--outline-variant);
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* ==================== LOKASI WISATA ==================== */
+.lokasi-wisata {
+    padding: var(--space-section-gap) 20px;
+    background-color: var(--surface-container-low);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--on-surface-variant);
+    font-size: 1.05rem;
+    margin-bottom: 3rem;
+}
+
+.lokasi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-gutter);
+    margin-top: 3rem;
+}
+
+.kartu-lokasi {
+    background: var(--surface-white);
+    border-radius: var(--radius-lg);
+    border-bottom: 4px solid var(--fern);
+    overflow: hidden;
+    box-shadow: 0 10px 30px -10px rgba(var(--shadow-tint), 0.10);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 1.75rem;
+}
+
+.kartu-lokasi:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -12px rgba(var(--shadow-tint), 0.22);
+}
+
+.kartu-image {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    font-weight: bold;
+    background: var(--secondary-container);
+    color: var(--tertiary);
+    margin-bottom: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.kartu-lokasi:hover .kartu-image {
+    transform: scale(1.1);
+}
+
+.kartu-image .material-symbols-outlined {
+    font-size: 26px;
+}
+
+.lokasi1-img,
+.lokasi2-img,
+.lokasi3-img,
+.lokasi4-img,
+.lokasi5-img,
+.lokasi6-img {
+    background: var(--secondary-container);
+    color: var(--tertiary);
+}
+
+.kartu-info {
+    padding: 0;
+}
+
+.kartu-info h3 {
+    font-family: var(--font-display);
+    color: var(--pine-teal);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.kartu-info p {
+    color: var(--on-surface-variant);
+    font-size: 0.95rem;
+}
+
+/* ==================== MODAL ==================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(28, 28, 22, 0.6);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background-color: var(--surface-white);
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 30px 60px -15px rgba(var(--shadow-tint), 0.35);
+    animation: slideDown 0.3s ease;
+    border: 1px solid var(--outline-variant);
+}
+
+.close {
+    color: var(--outline);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--pine-teal);
+}
+
+.detail-lokasi {
+    text-align: center;
+}
+
+.detail-foto {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-lokasi h2 {
+    font-family: var(--font-display);
+    color: var(--pine-teal);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.detail-lokasi p {
+    color: var(--on-surface-variant);
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* ==================== STATISTIK ==================== */
+.statistik {
+    padding: var(--space-section-gap) 20px;
+    background-color: var(--surface);
+}
+
+.statistik-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-gutter);
+    margin-bottom: 4rem;
+}
+
+.statistik-card {
+    background: var(--pine-teal);
+    color: var(--surface-white);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: 0 15px 35px -12px rgba(var(--shadow-tint), 0.2);
+    transition: all 0.3s ease;
+}
+
+.statistik-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px -12px rgba(var(--shadow-tint), 0.3);
+}
+
+.statistik-number {
+    font-family: var(--font-body);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.statistik-label {
+    font-size: 1rem;
+    opacity: 0.9;
+    letter-spacing: 0.02em;
+}
+
+.statistik-detail {
+    background-color: var(--surface-container-low);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    margin-bottom: 2rem;
+    border: 1px solid var(--outline-variant);
+}
+
+.statistik-detail h3 {
+    font-family: var(--font-display);
+    color: var(--pine-teal);
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.demographic-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.demographic-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background: var(--surface-white);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--fern);
+}
+
+.demographic-item .label {
+    font-weight: 500;
+    color: var(--on-surface);
+}
+
+.demographic-item .value {
+    font-weight: bold;
+    color: var(--pine-teal);
+    font-size: 1.1rem;
+}
+
+.ekonomi-info {
+    background-color: var(--surface-container-low);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+}
+
+.ekonomi-info h3 {
+    font-family: var(--font-display);
+    color: var(--pine-teal);
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.ekonomi-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-gutter);
+}
+
+.ekonomi-item {
+    background: var(--surface-white);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 20px -8px rgba(var(--shadow-tint), 0.12);
+    transition: all 0.3s ease;
+}
+
+.ekonomi-item:hover {
+    box-shadow: 0 12px 28px -8px rgba(var(--shadow-tint), 0.18);
+    transform: translateY(-3px);
+}
+
+.ekonomi-item h4 {
+    font-family: var(--font-display);
+    color: var(--pine-teal);
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+}
+
+.ekonomi-item p {
+    color: var(--on-surface-variant);
+    line-height: 1.6;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    background: var(--pine-teal);
+    color: var(--dust-grey);
+    text-align: center;
+    padding: 2.5rem 2rem;
+    margin-top: 3rem;
+}
+
+.footer p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+
+    /* ==================== NAVBAR MOBILE ==================== */
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: var(--pine-teal);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        gap: 0;
+        padding: 1rem 0;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        padding: 0.5rem 0;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 1rem;
+        border-radius: 0;
+    }
+
+    .nav-link:hover {
+        background-color: rgba(253, 249, 239, 0.12);
+    }
+
+    /* ==================== HERO MOBILE RESPONSIVE ==================== */
+    .hero {
+        min-height: 100svh;
+        min-height: 100dvh;
+        max-height: 750px;
+        overflow: hidden;
+    }
+
+    .carousel-container {
+        width: 100%;
+        height: 100svh;
+        height: 100dvh;
+        min-height: 500px;
+        max-height: 750px;
+        overflow: hidden;
+    }
+
+    .carousel {
+        width: 100%;
+        height: 100%;
+    }
+
+    .carousel-slide {
+        width: 100%;
+        height: 100%;
+    }
+
+    .slide-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .slide-content {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        min-height: 48%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        padding:
+            3rem
+            clamp(1rem, 5vw, 1.5rem)
+            clamp(4.5rem, 10vh, 6rem);
+
+        background: linear-gradient(
+            to bottom,
+            rgba(28, 39, 27, 0) 0%,
+            rgba(28, 39, 27, 0.15) 20%,
+            rgba(28, 39, 27, 0.4) 40%,
+            rgba(24, 34, 24, 0.75) 68%,
+            rgba(20, 28, 20, 0.94) 100%
+        );
+
+        text-align: left;
+    }
+
+    .slide-badge {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .slide-content h2 {
+        font-size: clamp(1.4rem, 6vw, 2rem);
+        line-height: 1.2;
+        margin-bottom: 0.7rem;
+
+        max-width: 100%;
+
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    .slide-content p {
+        font-size: clamp(0.85rem, 3.8vw, 1rem);
+        line-height: 1.5;
+
+        max-width: 100%;
+
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    .carousel-btn {
+        top: 50%;
+        transform: translateY(-50%);
+
+        padding: 10px 13px;
+        font-size: 22px;
+
+        z-index: 10;
+    }
+
+    .carousel-btn:hover {
+        transform: translateY(-50%);
+    }
+
+    .prev-btn {
+        left: 8px;
+    }
+
+    .next-btn {
+        right: 8px;
+    }
+
+    .carousel-dots {
+        bottom: clamp(1rem, 3vh, 1.8rem);
+        gap: 8px;
+        z-index: 20;
+    }
+
+    .dot {
+        width: 9px;
+        height: 9px;
+    }
+
+    /* ==================== BAGIAN LAIN TETAP SAMA ==================== */
+    .map-container {
+        grid-template-columns: 1fr;
+    }
+
+    .map {
+        height: 400px;
+    }
+
+    .tentang-content {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .statistik-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lokasi-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+    }
+
+    .demographic-info,
+    .ekonomi-items {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   MOBILE KECIL
+   Untuk layar 320px - 480px
+   ========================================================= */
+@media (max-width: 480px) {
+
+    .hero {
+        min-height: 100svh;
+        min-height: 100dvh;
+        max-height: 700px;
+    }
+
+    .carousel-container {
+        height: 100svh;
+        height: 100dvh;
+
+        min-height: 500px;
+        max-height: 700px;
+    }
+
+    .slide-content {
+        min-height: 50%;
+
+        padding:
+            2.5rem
+            1rem
+            clamp(4.2rem, 10vh, 5.5rem);
+
+        background: linear-gradient(
+            to bottom,
+            rgba(28, 39, 27, 0) 0%,
+            rgba(28, 39, 27, 0.15) 20%,
+            rgba(28, 39, 27, 0.45) 43%,
+            rgba(24, 34, 24, 0.8) 70%,
+            rgba(20, 28, 20, 0.95) 100%
+        );
+    }
+
+    .slide-content h2 {
+        font-size: clamp(1.25rem, 6vw, 1.6rem);
+        line-height: 1.2;
+        margin-bottom: 0.6rem;
+    }
+
+    .slide-content p {
+        font-size: clamp(0.8rem, 3.8vw, 0.95rem);
+        line-height: 1.45;
+    }
+
+    .carousel-btn {
+        padding: 9px 12px;
+        font-size: 20px;
+    }
+
+    .prev-btn {
+        left: 6px;
+    }
+
+    .next-btn {
+        right: 6px;
+    }
+
+    .carousel-dots {
+        bottom: 1rem;
+        gap: 7px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .nav-container {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .logo {
+        min-width: 0;
+        flex: 1;
+        gap: 0.6rem;
+    }
+
+    .logo-img {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .logo h1 {
+        font-size: clamp(0.95rem, 4.2vw, 1.2rem);
+        line-height: 1.2;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .hamburger {
+        width: 42px;
+        height: 42px;
+
+        flex-shrink: 0;
+
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .hamburger span {
+        width: 24px;
+        height: 3px;
+    }
+
+    .nav-menu {
+        top: 68px;
+        max-height: calc(100dvh - 68px);
+    }
+
+    .tentang-text h3 {
+        font-size: 1.2rem;
+    }
+
+    .statistik-number {
+        font-size: 2rem;
+    }
+
+    .statistik-card {
+        padding: 1.5rem;
+    }
+
+    .map {
+        height: 300px;
+    }
+
+    .info-card {
+        padding: 1.5rem;
+    }
+
+    .info-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .info-card p {
+        font-size: 0.9rem;
+    }
+}
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+   Untuk layar sekitar 320px
+   ========================================================= */
+@media (max-width: 340px) {
+
+    .slide-content {
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
+        padding-bottom: 4.5rem;
+    }
+
+    .slide-content h2 {
+        font-size: 1.2rem;
+        line-height: 1.2;
+    }
+
+    .slide-content p {
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .carousel-btn {
+        padding: 8px 10px;
+        font-size: 18px;
+    }
+
+    .carousel-dots {
+        bottom: 0.8rem;
+    }
+
+    .nav-container {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .logo {
+        gap: 0.4rem;
+    }
+
+    .logo-img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .logo h1 {
+        font-size: 0.85rem;
+    }
+
+    .hamburger {
+        width: 38px;
+        height: 38px;
+    }
+
+    .hamburger span {
+        width: 22px;
+    }
+}
